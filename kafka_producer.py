@@ -36,7 +36,7 @@ if __name__ == '__main__':
     producer = KafkaProducer(bootstrap_servers=['my-cluster-kafka-bootstrap:9092'], api_version=(0, 10))
 
     for i in range(6):
-        s = "Hello From Kafka - Python" + i
+        s = "Hello From Kafka - Python" + str(i)
         ack = producer.send('test', json.dumps(s).encode('utf-8'))
         sleep(10)
 
