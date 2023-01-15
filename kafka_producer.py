@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     for i in range(6):
         s = "Hello From Kafka - Python" + str(i)
-        ack = producer.send('test', json.dumps(s).encode('utf-8'))
+        ack = producer.send('my-topic', json.dumps(s).encode('utf-8'))
         sleep(10)
 
     if producer is not None:
