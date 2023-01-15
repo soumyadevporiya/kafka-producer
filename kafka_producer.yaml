@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafkaconsumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafkaconsumer
+  template:
+      metadata:
+        labels:
+          app: kafkaconsumer
+      spec:
+        containers:
+        - name: kafkaconsumer
+          image: gcr.io/alien-walker-373503/kafka_consumer:latest
