@@ -40,9 +40,8 @@ if __name__ == '__main__':
     count = 0
 
     for i in range(6):
-        if i == 0:
-            count = count + 1
-        s = "Hello From Kafka - Python " + "Message no: " + str(i) + " in loop no: " + str(count)
+        count = count + 1
+        s = "Hello From Kafka - Python " + str(i) + "Message no: " + str(count)
         ack = producer.send('my-topic', json.dumps(s).encode('utf-8'))
         sleep(10)
 
