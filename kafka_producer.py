@@ -4,6 +4,8 @@ from time import sleep
 
 # from bs4 import BeautifulSoup
 from kafka import KafkaProducer
+
+
 # from json import loads
 
 
@@ -35,10 +37,14 @@ if __name__ == '__main__':
     # producer = KafkaProducer(bootstrap_servers=['192.168.0.7:9092'], api_version=(0, 10))
     producer = KafkaProducer(bootstrap_servers=['my-cluster-kafka-bootstrap:9092'], api_version=(0, 10))
 
+    count = 0
+
     for i in range(6):
-        s = "Hello From Kafka - Python" + str(i)
+        if i == 0:
+            count = count + 1
+        s = "Hello From Kafka - Python " + "Message no: " + str(i) + " in loop no: " + str(count)
         ack = producer.send('my-topic', json.dumps(s).encode('utf-8'))
         sleep(10)
 
     if producer is not None:
-       producer.close()
+        producer.close()
