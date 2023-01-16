@@ -41,10 +41,10 @@ if __name__ == '__main__':
 
     for i in range(6):
         count = count + 1
-        s = "Hello From Kafka - Python " + str(i) + "Message no: " + str(count)
+        s = "Hello From Kafka - Python " + "Message no: " + str(count)
         #ack = producer.send('my-topic', json.dumps(s).encode('utf-8'))
         producer.send('my-topic', json.dumps(s).encode('utf-8'))
-        sleep(10)
+        sleep(60)
 
     if producer is not None:
         producer.close()
