@@ -66,7 +66,7 @@ if __name__ == '__main__':
               "id": count,
               "prediction": 0.00001
             }
-        producer.send('my-second-topic', json.dumps(s).encode('utf-8'))
+        producer.send('my-third-topic', json.dumps(s).encode('utf-8'))
         print(s)
         sleep(0.2)
 
