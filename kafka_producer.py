@@ -4,7 +4,7 @@ from time import sleep
 
 # from bs4 import BeautifulSoup
 from kafka import KafkaProducer
-
+import random
 
 # from json import loads
 
@@ -33,18 +33,42 @@ def publish_message(producer_instance, topic_name, key, value):
 
 
 if __name__ == '__main__':
-
+    #print("I am here - just outside loop")
     # producer = KafkaProducer(bootstrap_servers=['192.168.0.7:9092'], api_version=(0, 10))
-    producer = KafkaProducer(bootstrap_servers=['my-cluster-kafka-bootstrap:9092'], api_version=(0, 10))
+    producer = KafkaProducer(bootstrap_servers=['34.28.118.32:9094'], api_version=(0, 10))
 
     count = 0
 
-    for i in range(6):
+    """for i in range(6):
         count = count + 1
         s = "Hello From Kafka - Python " + "Message no: " + str(count)
         #ack = producer.send('my-topic', json.dumps(s).encode('utf-8'))
         producer.send('my-topic', json.dumps(s).encode('utf-8'))
-        sleep(60)
+        sleep(5)"""
+
+    """while(1==1):
+        count = count + 1
+        s = "Hello From Kafka - Python " + "Message no: " + str(count)
+        # ack = producer.send('my-topic', json.dumps(s).encode('utf-8'))
+        producer.send('my-topic', json.dumps(s).encode('utf-8'))
+        sleep(0.2)"""
+    #print("I am here - just outside loop")
+
+    while (1 == 1):
+        count = count + 1
+        #print("I am here - just inside loop")
+        #s = "Hello From Kafka - Python " + "Message no: " + str(count)
+        s = {
+              "v1": random.uniform(1, 10),
+              "v2": random.uniform(1, 10),
+              "v3": random.uniform(1, 10),
+              "v4": random.uniform(1, 10),
+              "id": count,
+              "prediction": 0.00001
+            }
+        producer.send('my-second-topic', json.dumps(s).encode('utf-8'))
+        print(s)
+        sleep(0.2)
 
     if producer is not None:
         producer.close()
